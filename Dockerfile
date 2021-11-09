@@ -10,4 +10,3 @@ RUN chmod -R 777 /usr/share/metricbeat/data
 COPY mysql.yml /usr/share/metricbeat/modules.d/mysql.yml
 COPY jolokia.yml /usr/share/metricbeat/modules.d/jolokia.yml
 USER metricbeat
-#
