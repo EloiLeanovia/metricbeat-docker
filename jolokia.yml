@@ -1,0 +1,44 @@
+# Module: jolokia
+# Docs: https://www.elastic.co/guide/en/beats/metricbeat/7.x/metricbeat-module-jolokia.html
+
+- module: jolokia
+  metricsets: ["jmx"]
+  period: 10s
+  hosts: ["${JOLOKIA}"]
+  namespace: "metrics"
+  path: "actuator/jolokia"
+  #bearer_token_file: "./token"
+  jmx.mappings:
+    - mbean: 'java.lang:type=Runtime'
+      attributes:
+        - attr: Uptime
+          field: uptime
+    - mbean: 'java.lang:type=Memory'
+      attributes:
+        - attr: HeapMemoryUsage
+          field: memory.heap_usage
+        - attr: NonHeapMemoryUsage
+          field: memory.non_heap_usage
+        - attr: GCMainThreadCpuUsed
+          field: memory.gc_main_thread_cpu_used
+    # GC Metrics - this depends on what is available on your JVM
+    - mbean: 'java.lang:type=GarbageCollector,name=global'
+      attributes:
+        - attr: CollectionTime
+          field: gc.cms_collection_time
+        - attr: CollectionCount
+          field: gc.cms_collection_count
+        - attr: MemoryUsed
+          field: gc.memory_used
+    - mbean: 'java.lang:type=OperatingSystem'
+      attributes:
+        - attr: ProcessCpuLoad
+          field: os.process_cpu_load
+    - mbean: 'java.lang:type=Threading'
+      attributes:
+        - attr: ThreadCount
+          field: threading.thread_count
+
+
+  jmx.application:
+  jmx.instance:
