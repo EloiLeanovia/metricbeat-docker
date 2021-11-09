@@ -8,5 +8,6 @@ RUN chown -R metricbeat:metricbeat /usr/share/metricbeat/data
 #LOL TODO: trouver une solution à ça
 RUN chmod -R 777 /usr/share/metricbeat/data
 RUN ls -al /usr/share/metricbeat/data
+RUN yum install mysql
 COPY mysql.yml /usr/share/metricbeat/modules.d/mysql.yml
 USER metricbeat
