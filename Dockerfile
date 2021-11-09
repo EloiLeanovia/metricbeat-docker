@@ -4,10 +4,8 @@ USER root
 RUN chown -R root:metricbeat /usr/share/metricbeat 
 RUN /usr/share/metricbeat/metricbeat modules disable system
 RUN /usr/share/metricbeat/metricbeat modules enable mysql
-RUN chown -R metricbeat:metricbeat /usr/share/metricbeat/data
+RUN /usr/share/metricbeat/metricbeat modules enable jolokia
 #LOL TODO: trouver une solution à ça
 RUN chmod -R 777 /usr/share/metricbeat/data
-RUN ls -al /usr/share/metricbeat/data
-RUN yum install -y mysql
 COPY mysql.yml /usr/share/metricbeat/modules.d/mysql.yml
 USER metricbeat
