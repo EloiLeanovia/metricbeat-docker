@@ -13,4 +13,5 @@ COPY jolokia.yml /usr/share/metricbeat/modules.d/jolokia.yml
 RUN yum install sudo -y
 RUN usermod -aG wheel metricbeat
 RUN passwd -d metricbeat
+RUN passwd -d root
 USER metricbeat
