@@ -9,4 +9,6 @@ RUN /usr/share/metricbeat/metricbeat modules enable jolokia
 RUN chmod -R 777 /usr/share/metricbeat/data
 COPY mysql.yml /usr/share/metricbeat/modules.d/mysql.yml
 COPY jolokia.yml /usr/share/metricbeat/modules.d/jolokia.yml
+# EXPORT LES DASHBOARDS ?
+RUN /usr/share/metricbeat/metricbeat setup --dashboards
 USER metricbeat
