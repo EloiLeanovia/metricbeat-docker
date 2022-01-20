@@ -9,9 +9,9 @@ RUN /usr/share/metricbeat/metricbeat modules enable jolokia
 RUN chmod -R 777 /usr/share/metricbeat/data
 COPY mysql.yml /usr/share/metricbeat/modules.d/mysql.yml
 COPY jolokia.yml /usr/share/metricbeat/modules.d/jolokia.yml
-# EXPORT LES DASHBOARDS ?
-RUN yum install sudo -y
-RUN usermod -aG wheel metricbeat
-RUN passwd -d metricbeat
-RUN passwd -d root
+# Installation de filebeat
+RUN curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.8.23-x86_64.rpm
+RUN rpm -vi filebeat-6.8.23-x86_64.rpm
+RUN sudo service filebeat start
+
 USER metricbeat
