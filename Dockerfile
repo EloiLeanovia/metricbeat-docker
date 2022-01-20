@@ -12,6 +12,6 @@ COPY jolokia.yml /usr/share/metricbeat/modules.d/jolokia.yml
 # Installation de filebeat
 RUN curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.8.23-x86_64.rpm
 RUN rpm -vi filebeat-6.8.23-x86_64.rpm
-RUN sudo service filebeat start
+RUN service filebeat start
 
 USER metricbeat
