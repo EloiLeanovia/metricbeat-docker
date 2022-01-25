@@ -6,7 +6,7 @@
     - status
     - galera_status
     - performance
-    - query
+    #- query
   period: 10s
 
   hosts: ["${MYSQL_MONITORING_USERNAME}:${MYSQL_MONITORING_PASSWORD:}@tcp(${MY_SQL})/"]
