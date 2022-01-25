@@ -37,6 +37,9 @@ setup.kibana:
   # username: "${KIBANA_USERNAME:}"
   # password: "${KIBANA_PASSWORD:}"
 
+fields:
+  project: leanerp-ms-salarie-dev
+
 
 # ================================== Outputs ===================================
 
