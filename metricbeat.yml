@@ -46,9 +46,10 @@ fields:
 # Configure what output to use when sending the data collected by the beat.
 
 # ---------------------------- Elasticsearch Output ----------------------------
-output.elasticsearch:
+#output.elasticsearch:
   # Array of hosts to connect to.
-  hosts: ["${ELASTICSEARCH_HOST}"]
+#  hosts: ["${ELASTICSEARCH_HOST}"]
+
 
   # Protocol - either `http` (default) or `https`.
   #protocol: "https"
@@ -57,6 +58,23 @@ output.elasticsearch:
   #api_key: "id:api_key"
   #username: "${ELASTICSEARCH_USERNAME}"
   #password: "${ELASTICSEARCH_PASSWORD}"
+
+# ------------------------------ Logstash Output -------------------------------
+output.logstash:
+  # The Logstash hosts
+  hosts: ["${LOGSTASH_HOST}"]
+
+  # Optional SSL. By default is off.
+  # List of root certificates for HTTPS server verifications
+  #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
+
+  # Certificate for SSL client authentication
+  #ssl.certificate: "/etc/pki/client/cert.pem"
+
+  # Client Certificate Key
+  #ssl.key: "/etc/pki/client/cert.key"
+
+
 
 # ================================= Processors =================================
 
